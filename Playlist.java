@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 public class Playlist {
 	
 	ArrayList<String> playlist = new ArrayList<String>();
+	ArrayList<String> validationReport = new ArrayList<String>();
 	String delims = "[\n]+";
 	protected static final Logger logger = LogManager.getLogger();
 	
@@ -26,6 +27,10 @@ public class Playlist {
 			playlist.add(tokens[i]);
 		}
 		logger.info("<<Playlist()");
+	}
+	
+	public void addReport(String input){
+		validationReport.add(input);
 	}
 	
 	

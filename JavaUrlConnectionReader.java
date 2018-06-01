@@ -26,12 +26,17 @@ public class JavaUrlConnectionReader {
 		logger.info(">>main()");
 		
 		if (args.length > 0 ) {
-			System.out.println("Program running in batch mode.");
-			String fileName = "D:\\eclipse-java-neon-1a-win32-x86_64\\eclipse\\Workspace-Sweng861\\HLS1\\src\\main\\java\\edu\\psgv\\sweng861\\urlListFile";
-			//File textFile = new File(fileName);                    //assign the name of urlListFile to textFile
+			System.out.println("Program HLS3.0 running in batch mode.");
+			
+			//The fileName will come from the command line now instead of a configuration file.
+			//String fileName = "D:\\eclipse-java-neon-1a-win32-x86_64\\eclipse\\Workspace-Sweng861\\HLS1\\src\\main\\java\\edu\\psgv\\sweng861\\urlListFile";
+			
+			System.out.println("Enter the full directory path and filename: ");
+			Scanner scanner = new Scanner(System.in);
+			File textFile = new File(scanner.nextLine());                    //assign the input to a textFile
 			
 			//Now read the contents of the file line by line, and call getUrlContents
-			try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+			try(BufferedReader br = new BufferedReader(new FileReader(textFile))){
 				String line;
 				while ((line = br.readLine()) != null){
 					//Now check the URL to see if the file specified is valid
@@ -96,10 +101,11 @@ public class JavaUrlConnectionReader {
 					}
 				}
 			} catch (FileNotFoundException e) {
-				System.out.println("Can't seem to find the file: " + fileName);
+				System.out.println("Can't seem to find the file: " + textFile.toString());
 			} catch (IOException e1) {
-				System.out.println("Can't seem to read the file" + fileName);
-			}	
+				System.out.println("Can't seem to read the file" + textFile.toString());
+			}
+			scanner.close();
 	
 		} else {                          //This is the other case where the command line is used.
 			System.out.println("This is HLS Validator 2.0 Command Line"); 
@@ -231,7 +237,7 @@ public class JavaUrlConnectionReader {
 			int i = 0;                                        //integer to test if this is the first line.
 			while ((line = bufferedReader.readLine()) != null){   
 				if (i == 0){
-					Validator.checkPlaylist(line);
+					Validator.checkPlaylist(line);   //This needs to come out for logic reasons and check in main part.
 					i++;
 				}
 				content += line + "\n";      
