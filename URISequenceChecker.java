@@ -47,7 +47,7 @@ public class URISequenceChecker extends Checker {
 		logger.info("<<URISequenceChecker Playlist()");
 	}
 	
-	void visitMaster(MasterPlaylist p){
+	void visit(MasterPlaylist p){
 		logger.info(">>URISequenceChecker MasterPlaylist()");
 		p.addReport("Report of MasterPlaylist tag sequence violations");
 		String masterPlaylistTest = ".m3u8";
@@ -57,6 +57,7 @@ public class URISequenceChecker extends Checker {
 		int tracker = 0;
 		for (int j=0; j<p.masterVariantList.size(); j++){
 			String masterLine = p.masterVariantList.get(j);
+			System.out.println("masterLine =" + masterLine.toString());      //Look here **************************
 			if (masterLine.contains(masterVariantTag)){
 				String nextMasterLine = p.masterVariantList.get(j+1);
 				if (nextMasterLine.contains(masterPlaylistTest)){
@@ -96,11 +97,6 @@ public class URISequenceChecker extends Checker {
 						p.addReport("Line " + k + " is not followed by a play .ts file");
 						errorCount++;
 					}
-				}
-				if (line.contains(masterPlaylistTest)) {
-					p.addReport("Line " + k + " has a variant .m3u8 in the playlist");
-				} else if (line.contains(masterVariantTag)) {
-					p.addReport("Line " + k + " has a Master Tag EXT-X-STREAM-INF in the playlist");
 				}
 				p.addReport("There are: " + errorCount + " Variant EXTINF tag followed by play file .ts violations");
 				p.addReport("=============================================================");

@@ -22,7 +22,7 @@ public class MainProgram {
 		//The first thing is to determine whether we are in batch mode or not.
 		
 		if (args.length > 0 ) {                       //Here is what happens in batch mode
-			System.out.println("Program HLS3 running in batch mode.");
+			System.out.println("Program HLS3.1 running in batch mode.");
 			System.out.println("Enter the full directory path and filename for the file containing URLs of Playlists and MasterPlaylists: ");
 			Scanner scanner = new Scanner(System.in);
 			File textFile = new File(scanner.nextLine());                    //assign the input to a textFile
@@ -71,6 +71,7 @@ public class MainProgram {
 							System.out.println("This file contains a Simple Playlist: " + line);
 							//Now create a new playlist object
 							Playlist simplePlaylist = new Playlist(output);  //Simple Object created
+							simplePlaylist.master=false;
 						
 							
 							FirstTagChecker firstTagChecker = new FirstTagChecker();
@@ -101,7 +102,7 @@ public class MainProgram {
 			
 			
 		} else {                                      //Here is what happens in command mode
-			System.out.println("This is HLS Validator 3 Command Line"); 
+			System.out.println("This is HLS Validator 3.1 Command Line"); 
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Enter the URL of the playlist, or 0 to quit:");
 			String urlEntry = scanner.next();
@@ -156,6 +157,7 @@ public class MainProgram {
 							System.out.println("This input was a Simple Playlist");
 							//Now create a new playlist object
 							Playlist simplePlaylist = new Playlist(output);  //Simple Object created
+							simplePlaylist.master=false;
 							
 							FirstTagChecker firstTagChecker = new FirstTagChecker();
 							SegmentLengthChecker segmentLengthChecker = new SegmentLengthChecker();

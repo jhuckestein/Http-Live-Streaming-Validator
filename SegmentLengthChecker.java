@@ -53,7 +53,7 @@ public class SegmentLengthChecker extends Checker {
 		logger.info("<<SegmentLengthChecker Playlist()");
 	}
 	
-	void visitMaster(MasterPlaylist p){
+	void visit(MasterPlaylist p){
 		logger.info(">>SegmentLengthChecker MasterPlaylist()");
 		for (int i=0; i<p.variantFiles.size(); i++){
 			p.addReport("Report of Maximum Duration of Media Segment Not Exceeded for: " + p.variantFiles.get(i));

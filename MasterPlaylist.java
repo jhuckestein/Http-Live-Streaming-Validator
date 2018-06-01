@@ -50,7 +50,10 @@ public class MasterPlaylist extends Playlist {
 		logger.info("<<addVariantFile()");
 	}
 	
-	public void accept (Checker c){
-		c.visitMaster(this);          //This method has to match the Checker methods to select the correct one in the 
-	}                                 //concrete visitor classes, or you will just get whatever Playlist has as the method.
+	//public void accept (Checker c){
+	//	c.visit(this);          //This method has to match the Checker methods to select the correct one in the Checker
+	//    for (Playlist p:listOfPlayObject){
+	//    	c.visit(p);
+	//    }
+	//}                                 
 }

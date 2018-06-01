@@ -15,7 +15,7 @@ public class FirstTagChecker extends Checker {
 	 * This method visits the MasterPlaylist object, and checks to see if the first element of MasterVariantList
 	 * contains the EXTM3U tag.  It then updates the object's validationReport as appropriate.
 	 */
-	void visitMaster(MasterPlaylist p){
+	void visit(MasterPlaylist p){
 		logger.info(">>FirstTagChecker MasterPlaylist()");
 		String testVariable = "#EXTM3U";
 		
