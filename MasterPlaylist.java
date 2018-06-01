@@ -15,8 +15,9 @@ public class MasterPlaylist extends Playlist {
 	 */
 	public MasterPlaylist (){}
 	
-	ArrayList<String> masterVariantList = new ArrayList<String>();
-	ArrayList<Playlist> listOfPlayObject = new ArrayList<Playlist>();
+	ArrayList<String> masterVariantList = new ArrayList<String>();        //The full list from the MasterPlaylist file
+	ArrayList<Playlist> listOfPlayObject = new ArrayList<Playlist>();     //List of all the playlist objects
+	ArrayList<String> variantFiles = new ArrayList<String>();             //Just the simple Playlist variants 
 	String delims = "[\n]+";
 	
 	public MasterPlaylist (String input){
@@ -38,4 +39,18 @@ public class MasterPlaylist extends Playlist {
 		listOfPlayObject.add(input);
 		logger.info("<<addPlaylist()");
 	}
+	
+	/*
+	 * It is helpful to keep track of the variant files for later report printing.  The addVariantFile method adds
+	 * a string to the variantFiles arraylist which contains the full variant file URL.
+	 */
+	public void addVariantFile(String input){
+		logger.info(">>addVariantFile()");
+		variantFiles.add(input);
+		logger.info("<<addVariantFile()");
+	}
+	
+	public void accept (Checker c){
+		c.visitMaster(this);          //This method has to match the Checker methods to select the correct one in the 
+	}                                 //concrete visitor classes, or you will just get whatever Playlist has as the method.
 }

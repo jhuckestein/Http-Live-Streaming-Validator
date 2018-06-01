@@ -6,4 +6,5 @@ package edu.psgv.sweng861;
  */
 public abstract class Checker {
 	abstract void visit(Playlist p);
+	abstract void visitMaster(MasterPlaylist p);
 }
