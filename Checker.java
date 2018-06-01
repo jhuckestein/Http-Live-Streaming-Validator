@@ -1,10 +1,11 @@
-package edu.psgv.sweng861;
+package mypackage;
 
-/*
- * This is the abstract Visitor class which the FirstTagChecker, SegmentLengthChecker, URISequenceChecker, and 
- * TagValidityChecker will extend.  They visit Playlist and MasterPlaylist objects hence the abstract method.
- */
+
 public abstract class Checker {
 	abstract void visit(Playlist p);
-	//abstract void visitMaster(MasterPlaylist p);
+	//abstract void visit(MasterPlaylist p);
+	
+	//So, why can't the compiler tell the difference between a MasterPlaylist, and a Playlist?  A seemingly simple example of
+	//Polymorphism doesn't seem to work.  A child class should be able to substitute for a parent class.
+
 }
